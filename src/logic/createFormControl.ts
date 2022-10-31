@@ -434,7 +434,7 @@ export function createFormControl<
             context.valid = false;
 
             if (shouldOnlyCheckValid) {
-              break;
+              return context.valid;
             }
           }
 
