@@ -97,6 +97,7 @@ export type UseFormProps<
   shouldUseNativeValidation: boolean;
   criteriaMode: CriteriaMode;
   delayError: number;
+  shouldUseDefaultValuesToPopulateFormValuesOnly: boolean;
 }>;
 
 export type FieldNamesMarkedBoolean<TFieldValues extends FieldValues> = DeepMap<

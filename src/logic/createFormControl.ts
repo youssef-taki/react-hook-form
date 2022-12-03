@@ -86,6 +86,7 @@ const defaultOptions = {
   mode: VALIDATION_MODE.onSubmit,
   reValidateMode: VALIDATION_MODE.onChange,
   shouldFocusError: true,
+  shouldUseDefaultValuesToPopulateFormValuesOnly: true,
 } as const;
 
 export function createFormControl<
@@ -111,7 +112,9 @@ export function createFormControl<
     errors: {} as FieldErrors<TFieldValues>,
   };
   let _fields = {};
-  let _defaultValues = cloneObject(_options.defaultValues) || {};
+  let _defaultValues = _options.shouldUseDefaultValuesToPopulateFormValuesOnly 
+    ? {} 
+    : (cloneObject(_options.defaultValues) || {});
   let _formValues = _options.shouldUnregister
     ? {}
     : cloneObject(_defaultValues);
