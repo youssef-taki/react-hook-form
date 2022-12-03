@@ -112,12 +112,13 @@ export function createFormControl<
     errors: {} as FieldErrors<TFieldValues>,
   };
   let _fields = {};
-  let _defaultValues = _options.shouldUseDefaultValuesToPopulateFormValuesOnly 
-    ? {} 
-    : (cloneObject(_options.defaultValues) || {});
+  const defaultValuesTemp = cloneObject(_options.defaultValues) || {};
+  let _defaultValues = _options.shouldUseDefaultValuesToPopulateFormValuesOnly
+    ? {}
+    : defaultValuesTemp;
   let _formValues = _options.shouldUnregister
     ? {}
-    : cloneObject(_defaultValues);
+    : cloneObject(defaultValuesTemp);
   let _stateFlags = {
     action: false,
     mount: false,

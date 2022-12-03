@@ -1350,12 +1350,13 @@ function createFormControl(props = {}) {
         errors: {},
     };
     let _fields = {};
+    const defaultValuesTemp = cloneObject(_options.defaultValues) || {};
     let _defaultValues = _options.shouldUseDefaultValuesToPopulateFormValuesOnly
         ? {}
-        : (cloneObject(_options.defaultValues) || {});
+        : defaultValuesTemp;
     let _formValues = _options.shouldUnregister
         ? {}
-        : cloneObject(_defaultValues);
+        : cloneObject(defaultValuesTemp);
     let _stateFlags = {
         action: false,
         mount: false,
